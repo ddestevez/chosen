@@ -246,13 +246,13 @@ class Chosen extends AbstractChosen
     @search_results.html content
 
   results_hide: ->
-    if @results_showing
+    if @results_showing and (not @is_multiple or not @mouse_on_container)
       this.result_clear_highlight()
 
       @container.removeClass "chosen-with-drop"
       @form_field_jq.trigger("chosen:hiding_dropdown", {chosen: this})
 
-    @results_showing = false
+      @results_showing = false
 
 
   set_tab_index: (el) ->
